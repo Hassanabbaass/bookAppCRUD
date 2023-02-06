@@ -28,11 +28,53 @@ img{
 }
 
 .delete{
+    padding: 3px 6px;
+    background-color: white;
+    cursor: pointer;
     border: 1px solid rgb(245, 191, 191);
     color: rgb(242, 100, 100);
 }
 
 .update{
+    padding: 3px 6px;
+    background-color: white;
+    cursor: pointer;
     border: 1px solid rgb(204, 204, 243);
     color: rgb(139, 139, 234);
+}
+
+.addNewBook{
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: coral;
+    color: white;
+    font-weight: bold;
+}
+
+.addLink{
+    color: white;
+    text-decoration: none;
+}
+
+.updateLink{
+    text-decoration: none;
+    color: rgb(139, 139, 234);
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input{
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+h1 {
+    margin-bottom: 50px;
 }

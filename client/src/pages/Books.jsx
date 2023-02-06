@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { getBooks } from '../services/getBooks'; 
+import { deleteBook } from '../services/deleteBook';
 
 
 const Books = () => {
@@ -16,6 +17,15 @@ const Books = () => {
         })
     }, [])
 
+    const handleDeleteBook = (bookId) => {
+        deleteBook(bookId).then((result)=>{
+            console.log(result)
+            window.location.reload()
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
+
   return (
     <div>
         <h1>Hassan's Books App</h1>
@@ -27,13 +37,13 @@ const Books = () => {
                 <h2>{item.title}</h2>
                 <p>{item.desc}</p>
                 <span>{item.price}</span>
-                <button className='delete'>Delete</button>
-                <button className='update'>Update</button>
+                <button className='delete' onClick={()=>{handleDeleteBook(item.id)}}>Delete</button>
+                <button className='update'><Link className='updateLink' to='/update'>Update</Link></button>
             </div>
         ))}
         </div>
 
-        <button><Link to='/add'>ADD NEW BOOK</Link></button>
+        <button className='addNewBook'><Link className='addLink' to='/add'>ADD NEW BOOK</Link></button>
 
     </div>
   )
