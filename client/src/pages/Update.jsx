@@ -1,8 +1,72 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { updateBook } from "../services/updateBook";
 
 const Update = () => {
+
+    const [updatedBook, setUpdatedBook] = useState({
+        title: "",
+        desc: "",
+        price: null,
+        cover: "",
+      });
+
+      const [error,setError] = useState(false)
+    
+      const location = useLocation();
+      const navigate = useNavigate();
+    
+      const bookId = location.pathname.split("/")[2];
+    
+      const handleChange = (e) => {
+        setUpdatedBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      };
+
+      const handleUpdateBook = async (e) => {
+        e.preventDefault();
+        updateBook(bookId, updatedBook).then((result) => {
+            console.log(result);
+            navigate('/')
+        }).catch((error) => {
+            console.log(error)
+            setError(error);
+        })
+
+        //seterror true hon
+      }
+
   return (
-    <div>Update</div>
+    <div className="form">
+        <h1>Update the Book</h1>
+        <input
+        type="text"
+        placeholder="Book title"
+        name="title"
+        onChange={handleChange}
+        />
+        <textarea
+        rows={5}
+        type="text"
+        placeholder="Book desc"
+        name="desc"
+        onChange={handleChange}
+        />
+        <input
+        type="number"
+        placeholder="Book price"
+        name="price"
+        onChange={handleChange}
+        />
+        <input
+        type="text"
+        placeholder="Book cover"
+        name="cover"
+        onChange={handleChange}
+        />
+        <button className="addNewBook" onClick={handleUpdateBook}>Update</button>
+        {error && "Something went wrong!"}
+        <Link to="/">See all books</Link>
+    </div>
   )
 }
 
