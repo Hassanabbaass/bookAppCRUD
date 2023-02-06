@@ -9,10 +9,15 @@
 
 .booksDiv{
     display: flex;
+    gap: 10px;
 }
 
 .bookDiv{
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 img{
@@ -20,4 +25,14 @@ img{
     height: 300px;
     object-fit: cover;
     background-color: coral;
+}
+
+.delete{
+    border: 1px solid rgb(245, 191, 191);
+    color: rgb(242, 100, 100);
+}
+
+.update{
+    border: 1px solid rgb(204, 204, 243);
+    color: rgb(139, 139, 234);
 }

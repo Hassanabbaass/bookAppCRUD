@@ -27,6 +27,8 @@ const Books = () => {
                 <h2>{item.title}</h2>
                 <p>{item.desc}</p>
                 <span>{item.price}</span>
+                <button className='delete'>Delete</button>
+                <button className='update'>Update</button>
             </div>
         ))}
         </div>
